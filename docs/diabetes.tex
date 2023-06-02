@@ -388,7 +388,7 @@
 \begin{document}
     
     \maketitle
-    
+    \tableofcontents
     
 
     
@@ -451,7 +451,7 @@ manipulation of the dataset, \texttt{matplotlib}, \texttt{plotly} and
 evaluation tools they offer.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{210}{\boxspacing}
+\prompt{In}{incolor}{220}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
 \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
@@ -488,7 +488,7 @@ sure nothing weird is happening in the dataset.
 First, I read in the dataset from the csv file.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{167}{\boxspacing}
+\prompt{In}{incolor}{221}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{../data/diabetes\PYZus{}prediction\PYZus{}dataset.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
@@ -496,7 +496,7 @@ First, I read in the dataset from the csv file.
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{167}{\boxspacing}
+\prompt{Out}{outcolor}{221}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
    gender   age  hypertension  heart\_disease smoking\_history    bmi
 0  Female  80.0             0              1           never  25.19  \textbackslash{}
@@ -528,14 +528,14 @@ First, I read in the dataset from the csv file.
 columns are correctly typed:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{168}{\boxspacing}
+\prompt{In}{incolor}{222}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{o}{.}\PY{n}{dtypes}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{168}{\boxspacing}
+\prompt{Out}{outcolor}{222}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 gender                  object
 age                    float64
@@ -553,14 +553,14 @@ dtype: object
     We can use the describe method to check the value ranges of the columns:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{169}{\boxspacing}
+\prompt{In}{incolor}{223}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{n}{include}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{all}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{169}{\boxspacing}
+\prompt{Out}{outcolor}{223}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
         gender            age  hypertension  heart\_disease smoking\_history
 count   100000  100000.000000  100000.00000  100000.000000          100000  \textbackslash{}
@@ -596,7 +596,7 @@ actually categorical columns (they have a few unique values), while
 are meant to be boolean, and finally \texttt{age} should be an integer.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{170}{\boxspacing}
+\prompt{In}{incolor}{224}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}
 \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gender}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gender}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{category}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -610,7 +610,7 @@ are meant to be boolean, and finally \texttt{age} should be an integer.
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{170}{\boxspacing}
+\prompt{Out}{outcolor}{224}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 gender                 category
 age                       int32
@@ -628,7 +628,7 @@ dtype: object
     Let's check our categorical values:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{171}{\boxspacing}
+\prompt{In}{incolor}{225}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{columns} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{select\PYZus{}dtypes}\PY{p}{(}\PY{n}{include}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{category}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{columns}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}
 
@@ -653,7 +653,7 @@ smoking\_history
 \texttt{smoking\_history}:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{172}{\boxspacing}
+\prompt{In}{incolor}{226}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{No Info}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{no\PYZus{}info}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{not current}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{not\PYZus{}current}\PY{l+s+s1}{\PYZsq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
 
@@ -687,14 +687,14 @@ values.
     First, I checked that no values were missing.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{173}{\boxspacing}
+\prompt{In}{incolor}{227}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{o}{.}\PY{n}{isna}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{173}{\boxspacing}
+\prompt{Out}{outcolor}{227}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 gender                 0
 age                    0
@@ -720,12 +720,12 @@ The first weirdness I noticed was with BMI.
 Let us plot the values of BMI in a histogram:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{174}{\boxspacing}
+\prompt{In}{incolor}{228}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{values} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bmi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{counts}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{values}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{auto}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{darkgreen}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 
-\PY{n}{plt}\PY{o}{.}\PY{n}{gcf}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{gcf}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
@@ -740,12 +740,12 @@ auto, but that singular peak will not disappear. Let's try logarithmic
 scale, so we can at least see something:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{175}{\boxspacing}
+\prompt{In}{incolor}{229}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{values} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bmi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{counts}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{values}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{auto}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{darkgreen}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{yscale}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{gcf}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{gcf}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{set\PYZus{}size\PYZus{}inches}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
@@ -758,7 +758,7 @@ scale, so we can at least see something:
     Is that a single value of BMI? Let's count the most common values:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{176}{\boxspacing}
+\prompt{In}{incolor}{230}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{max\PYZus{}count\PYZus{}bin} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{counts}\PY{p}{)}
 \PY{n}{max\PYZus{}count} \PY{o}{=} \PY{n}{counts}\PY{p}{[}\PY{n}{max\PYZus{}count\PYZus{}bin}\PY{p}{]}
@@ -788,7 +788,7 @@ scale, so we can at least see something:
 dataset with the exact BMI of 27.32. Let's look at these:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{211}{\boxspacing}
+\prompt{In}{incolor}{231}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{weird\PYZus{}entries} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bmi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+m+mf}{27.32}\PY{p}{]}
 \PY{n}{weird\PYZus{}entries}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
@@ -796,7 +796,7 @@ dataset with the exact BMI of 27.32. Let's look at these:
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{211}{\boxspacing}
+\prompt{Out}{outcolor}{231}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
     gender  age  hypertension  heart\_disease smoking\_history    bmi
 1   Female   54         False          False         no\_info  27.32  \textbackslash{}
@@ -830,14 +830,14 @@ down the mean of the rest of the dataset, which is exactly
 \texttt{27.32}.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{178}{\boxspacing}
+\prompt{In}{incolor}{232}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bmi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{!=} \PY{l+m+mf}{27.32}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bmi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{178}{\boxspacing}
+\prompt{Out}{outcolor}{232}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 27.321029595329176
 \end{Verbatim}
@@ -861,7 +861,7 @@ Next issue is with the age.
 Let's plot the values:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{179}{\boxspacing}
+\prompt{In}{incolor}{233}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{values} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{num\PYZus{}bins} \PY{o}{=} \PY{n}{values}\PY{o}{.}\PY{n}{nunique}\PY{p}{(}\PY{p}{)}
@@ -883,14 +883,14 @@ overrepresented in this data and probably not all of them are exactly
 interval.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{180}{\boxspacing}
+\prompt{In}{incolor}{234}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{80}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{180}{\boxspacing}
+\prompt{Out}{outcolor}{234}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 5621
 \end{Verbatim}
@@ -900,7 +900,7 @@ interval.
 could cause some skewing.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{181}{\boxspacing}
+\prompt{In}{incolor}{235}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{age}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{l+m+mi}{80}\PY{p}{]}
 \end{Verbatim}
@@ -912,7 +912,7 @@ could cause some skewing.
 Let's plot the values:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{182}{\boxspacing}
+\prompt{In}{incolor}{236}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{values} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gender}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{num\PYZus{}bins} \PY{o}{=} \PY{n}{values}\PY{o}{.}\PY{n}{nunique}\PY{p}{(}\PY{p}{)}
@@ -933,7 +933,7 @@ concerned about the biological sex of the participants, so I will remove
 these entries too.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{183}{\boxspacing}
+\prompt{In}{incolor}{237}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gender}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{!=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Other}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gender}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gender}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{cat}\PY{o}{.}\PY{n}{remove\PYZus{}categories}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Other}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -942,7 +942,7 @@ these entries too.
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{183}{\boxspacing}
+\prompt{Out}{outcolor}{237}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 ['Female', 'Male']
 Categories (2, object): ['Female', 'Male']
@@ -953,7 +953,7 @@ Categories (2, object): ['Female', 'Male']
 \paragraph{Blood glucose level}\label{blood-glucose-level}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{184}{\boxspacing}
+\prompt{In}{incolor}{238}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{values} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{blood\PYZus{}glucose\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{counts}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{values}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+m+mi}{200}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{darkgreen}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -981,7 +981,7 @@ all.
 \paragraph{Blood sugar level}\label{blood-sugar-level}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{185}{\boxspacing}
+\prompt{In}{incolor}{239}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{values} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{HbA1c\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{counts}\PY{p}{,} \PY{n}{bins}\PY{p}{,} \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{values}\PY{p}{,} \PY{n}{bins}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{auto}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{darkgreen}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{edgecolor}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -1008,7 +1008,7 @@ think this looks okay.
 \paragraph{Smoking history}\label{smoking-history}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{186}{\boxspacing}
+\prompt{In}{incolor}{240}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{values} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{n}{num\PYZus{}bins} \PY{o}{=} \PY{n}{values}\PY{o}{.}\PY{n}{nunique}\PY{p}{(}\PY{p}{)}
@@ -1036,7 +1036,7 @@ past, but weren't addicted.
 \paragraph{Hypertension}\label{hypertension}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{187}{\boxspacing}
+\prompt{In}{incolor}{241}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{hypertension}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
 
@@ -1060,7 +1060,7 @@ past, but weren't addicted.
 \paragraph{Heart disease}\label{heart-disease}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{212}{\boxspacing}
+\prompt{In}{incolor}{242}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{heart\PYZus{}disease}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
 
@@ -1086,7 +1086,7 @@ past, but weren't addicted.
 Diabetes is our target value.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{189}{\boxspacing}
+\prompt{In}{incolor}{243}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{diabetes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
 
@@ -1121,7 +1121,7 @@ variables. This can be done with the \texttt{get\_dummies} function, as
 seen below.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{190}{\boxspacing}
+\prompt{In}{incolor}{244}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df\PYZus{}encoded} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{get\PYZus{}dummies}\PY{p}{(}\PY{n}{df}\PY{p}{)}
 \PY{n}{df\PYZus{}encoded}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
@@ -1129,7 +1129,7 @@ seen below.
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{190}{\boxspacing}
+\prompt{Out}{outcolor}{244}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
    age  hypertension  heart\_disease    bmi  HbA1c\_level  blood\_glucose\_level
 1   54         False          False  27.32          6.6                   80  \textbackslash{}
@@ -1164,7 +1164,7 @@ seen below.
     Then, we separate our target variable.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{191}{\boxspacing}
+\prompt{In}{incolor}{245}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{X} \PY{o}{=} \PY{n}{df\PYZus{}encoded}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{diabetes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
 \PY{n}{y} \PY{o}{=} \PY{n}{df\PYZus{}encoded}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{diabetes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
@@ -1177,7 +1177,7 @@ generator, so it will always result in the same split, across multiple
 runs of our notebook.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{192}{\boxspacing}
+\prompt{In}{incolor}{246}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{train\PYZus{}test\PYZus{}split}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{test\PYZus{}size}\PY{o}{=}\PY{l+m+mf}{0.2}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{42}\PY{p}{)}
 \end{Verbatim}
@@ -1187,7 +1187,7 @@ runs of our notebook.
 \texttt{scikit-learn}.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{213}{\boxspacing}
+\prompt{In}{incolor}{247}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{model} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}
 \PY{n}{\PYZus{}} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
@@ -1197,7 +1197,7 @@ runs of our notebook.
     The model's coefficients are as follows:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{194}{\boxspacing}
+\prompt{In}{incolor}{248}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{coefficients} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Variable}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{X}\PY{o}{.}\PY{n}{columns}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coefficient}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{model}\PY{o}{.}\PY{n}{coef\PYZus{}}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coefficient}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
 \PY{n}{intercept} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Variable}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Intercept}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coefficient}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{model}\PY{o}{.}\PY{n}{intercept\PYZus{}}\PY{p}{\PYZcb{}}\PY{p}{)}
@@ -1246,7 +1246,7 @@ which we will do shortly.
 follows:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{195}{\boxspacing}
+\prompt{In}{incolor}{249}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{)}
 \PY{n}{mse} \PY{o}{=} \PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{)}
@@ -1261,7 +1261,7 @@ Mean Squared Error: 0.04693052558568325
     And on the train dataset:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{196}{\boxspacing}
+\prompt{In}{incolor}{250}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{)}
 \PY{n}{mse} \PY{o}{=} \PY{n}{mean\PYZus{}squared\PYZus{}error}\PY{p}{(}\PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{)}
@@ -1295,7 +1295,7 @@ using Chi-square test of independence.
 At first, I will create the frequency table of their values:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{197}{\boxspacing}
+\prompt{In}{incolor}{251}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{crosstab} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{gender}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{diabetes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \PY{n}{crosstab}
@@ -1303,7 +1303,7 @@ At first, I will create the frequency table of their values:
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{197}{\boxspacing}
+\prompt{Out}{outcolor}{251}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 diabetes  False  True
 gender
@@ -1318,7 +1318,7 @@ statistic.
 The null hypothesis is that the variables are independent.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{198}{\boxspacing}
+\prompt{In}{incolor}{252}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{chi2}\PY{p}{,} \PY{n}{p}\PY{p}{,} \PY{n}{dof}\PY{p}{,} \PY{n}{expected} \PY{o}{=} \PY{n}{chi2\PYZus{}contingency}\PY{p}{(}\PY{n}{crosstab}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Chi\PYZhy{}square value: }\PY{l+s+si}{\PYZob{}}\PY{n}{chi2}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -1370,7 +1370,7 @@ I will also run the same independence test on \texttt{smoking\_history}
 and \texttt{diabetes}:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{199}{\boxspacing}
+\prompt{In}{incolor}{253}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{crosstab} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{diabetes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \PY{n}{crosstab}
@@ -1378,7 +1378,7 @@ and \texttt{diabetes}:
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{199}{\boxspacing}
+\prompt{Out}{outcolor}{253}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 diabetes         False  True
 smoking\_history
@@ -1392,7 +1392,7 @@ not\_current       5346    606
 \end{tcolorbox}
         
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{200}{\boxspacing}
+\prompt{In}{incolor}{254}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{chi2}\PY{p}{,} \PY{n}{p}\PY{p}{,} \PY{n}{dof}\PY{p}{,} \PY{n}{expected} \PY{o}{=} \PY{n}{chi2\PYZus{}contingency}\PY{p}{(}\PY{n}{crosstab}\PY{p}{)}
 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Chi\PYZhy{}square value: }\PY{l+s+si}{\PYZob{}}\PY{n}{chi2}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
@@ -1437,7 +1437,7 @@ relationship with diabetes, I will be using a correlation matrix heatmap
 to visualise these 1-1 relationships.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{203}{\boxspacing}
+\prompt{In}{incolor}{255}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{correlation\PYZus{}matrix} \PY{o}{=} \PY{n}{df\PYZus{}encoded}\PY{o}{.}\PY{n}{corr}\PY{p}{(}\PY{p}{)}
 
@@ -1469,14 +1469,14 @@ investigate whether or not the differences in the results are
 statistically significant.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{204}{\boxspacing}
+\prompt{In}{incolor}{256}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{blood\PYZus{}glucose\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{blood\PYZus{}glucose\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{204}{\boxspacing}
+\prompt{Out}{outcolor}{256}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
                  blood\_glucose\_level
 smoking\_history
@@ -1496,14 +1496,14 @@ to the fact that former smokers may have a longer smoking history than
 current smokers.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{205}{\boxspacing}
+\prompt{In}{incolor}{257}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{HbA1c\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{HbA1c\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
             \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{205}{\boxspacing}
+\prompt{Out}{outcolor}{257}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
                  HbA1c\_level
 smoking\_history
@@ -1545,7 +1545,7 @@ categories.
 Let us first define the function:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{216}{\boxspacing}
+\prompt{In}{incolor}{258}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{welch\PYZus{}p\PYZus{}value\PYZus{}matrix}\PY{p}{(}\PY{n}{category}\PY{p}{,} \PY{n}{target}\PY{p}{)}\PY{p}{:}
   \PY{n}{categories} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{n}{category}\PY{p}{]}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{p}{)}
@@ -1577,7 +1577,7 @@ Let us first define the function:
     Then let's run this function for the \texttt{HbA1c\_level}!
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{214}{\boxspacing}
+\prompt{In}{incolor}{259}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{welch\PYZus{}p\PYZus{}value\PYZus{}matrix}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{HbA1c\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
@@ -1612,7 +1612,7 @@ in a higher risk category for increased \texttt{HbA1c\_level}s.
     Now, let us look at the target variable \texttt{blood\_glucose\_level}!
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{207}{\boxspacing}
+\prompt{In}{incolor}{260}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{welch\PYZus{}p\PYZus{}value\PYZus{}matrix}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{smoking\PYZus{}history}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{blood\PYZus{}glucose\PYZus{}level}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
@@ -1656,9 +1656,9 @@ I did previously, but on the variables, specified on the input
 parameter:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{208}{\boxspacing}
+\prompt{In}{incolor}{264}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{linear\PYZus{}regression}\PY{p}{(}\PY{n}{variables}\PY{p}{,} \PY{n}{should\PYZus{}print}\PY{p}{:} \PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
+\PY{k}{def} \PY{n+nf}{linear\PYZus{}regression}\PY{p}{(}\PY{n}{variables}\PY{p}{,} \PY{n}{should\PYZus{}print}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
 
   \PY{n}{X} \PY{o}{=} \PY{n}{df\PYZus{}encoded}\PY{p}{[}\PY{n}{variables}\PY{p}{]}
   \PY{n}{y} \PY{o}{=} \PY{n}{df\PYZus{}encoded}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{diabetes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
@@ -1692,7 +1692,7 @@ parameter:
 collected the results:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{209}{\boxspacing}
+\prompt{In}{incolor}{265}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{column\PYZus{}names} \PY{o}{=} \PY{n}{df\PYZus{}encoded}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{diabetes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{.}\PY{n}{columns}
 \PY{n}{power\PYZus{}set\PYZus{}nonempty} \PY{o}{=} \PY{p}{[}\PY{n+nb}{list}\PY{p}{(}\PY{n}{combo}\PY{p}{)} \PY{k}{for} \PY{n}{r} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{column\PYZus{}names}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{k}{for} \PY{n}{combo} \PY{o+ow}{in} \PY{n}{combinations}\PY{p}{(}\PY{n}{column\PYZus{}names}\PY{p}{,} \PY{n}{r}\PY{p}{)}\PY{p}{]}
@@ -1709,29 +1709,13 @@ collected the results:
 \end{Verbatim}
 \end{tcolorbox}
 
-    \begin{Verbatim}[commandchars=\\\{\}, frame=single, framerule=2mm, rulecolor=\color{outerrorbackground}]
-\textcolor{ansi-red-intense}{\textbf{---------------------------------------------------------------------------}}
-\textcolor{ansi-red-intense}{\textbf{TypeError}}                                 Traceback (most recent call last)
-Cell \textcolor{ansi-green-intense}{\textbf{In[209], line 9}}
-\textcolor{ansi-green}{      6} results = []
-\textcolor{ansi-green}{      8} for columns in power\_set\_nonempty:
-\textcolor{ansi-green-intense}{\textbf{----> 9}}   mse = linear\_regression(columns)
-\textcolor{ansi-green}{     10}   results.append(\{
-\textcolor{ansi-green}{     11}     'columns': columns,
-\textcolor{ansi-green}{     12}     'num\_vars': len(columns),
-\textcolor{ansi-green}{     13}     'mse': mse
-\textcolor{ansi-green}{     14}   \})
-
-\textcolor{ansi-red-intense}{\textbf{TypeError}}: linear\_regression() missing 1 required positional argument: 'should\_print'
-    \end{Verbatim}
-
     Using the following code, I was able to display the actual variables
 needed as hover text for every data point. However, this plot is only
 visible in the Jupyter notebook it is not displayed when I convert it to
 a PDF. For the PDF, a similar plot, without the hover follows next.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{275}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{results\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{)}
 
@@ -1746,12 +1730,9 @@ a PDF. For the PDF, a similar plot, without the hover follows next.
     For the PDF, here is the same plot, without the hover text:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{276}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} Create a DataFrame from the results}
 \PY{n}{results\PYZus{}df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{results}\PY{p}{)}
-
-\PY{c+c1}{\PYZsh{} Create the plot}
 \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{results\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mse}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{results\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{num\PYZus{}vars}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{MSE}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
@@ -1790,14 +1771,14 @@ Further variables don't decrease the MSE significantly.
 variables:
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{277}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{min\PYZus{}mse\PYZus{}columns} \PY{o}{=} \PY{n}{results\PYZus{}df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{num\PYZus{}vars}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{n}{x}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mse}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{idxmin}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{columns}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{278}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{n\PYZus{}vars} \PY{o}{=} \PY{l+m+mi}{1}
 \PY{n}{cols} \PY{o}{=} \PY{n}{min\PYZus{}mse\PYZus{}columns}\PY{p}{[}\PY{n}{n\PYZus{}vars}\PY{p}{]}
@@ -1809,6 +1790,7 @@ variables:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Number of variables: 1
+
 Coefficients:
               Variable  Coefficient
 0  blood\_glucose\_level     0.002731
@@ -1822,7 +1804,7 @@ Mean Squared Error:
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{279}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{n\PYZus{}vars} \PY{o}{=} \PY{l+m+mi}{2}
 \PY{n}{cols} \PY{o}{=} \PY{n}{min\PYZus{}mse\PYZus{}columns}\PY{p}{[}\PY{n}{n\PYZus{}vars}\PY{p}{]}
@@ -1834,6 +1816,7 @@ Mean Squared Error:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Number of variables: 2
+
 Coefficients:
               Variable  Coefficient
 0          HbA1c\_level     0.084451
@@ -1848,7 +1831,7 @@ Mean Squared Error:
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{280}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{n\PYZus{}vars} \PY{o}{=} \PY{l+m+mi}{3}
 \PY{n}{cols} \PY{o}{=} \PY{n}{min\PYZus{}mse\PYZus{}columns}\PY{p}{[}\PY{n}{n\PYZus{}vars}\PY{p}{]}
@@ -1860,6 +1843,7 @@ Mean Squared Error:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Number of variables: 3
+
 Coefficients:
               Variable  Coefficient
 1          HbA1c\_level     0.080259
@@ -1875,7 +1859,7 @@ Mean Squared Error:
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{281}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{n\PYZus{}vars} \PY{o}{=} \PY{l+m+mi}{4}
 \PY{n}{cols} \PY{o}{=} \PY{n}{min\PYZus{}mse\PYZus{}columns}\PY{p}{[}\PY{n}{n\PYZus{}vars}\PY{p}{]}
@@ -1887,6 +1871,7 @@ Mean Squared Error:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Number of variables: 4
+
 Coefficients:
               Variable  Coefficient
 2          HbA1c\_level     0.079186
@@ -1903,7 +1888,7 @@ Mean Squared Error:
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{282}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{n\PYZus{}vars} \PY{o}{=} \PY{l+m+mi}{5}
 \PY{n}{cols} \PY{o}{=} \PY{n}{min\PYZus{}mse\PYZus{}columns}\PY{p}{[}\PY{n}{n\PYZus{}vars}\PY{p}{]}
@@ -1933,7 +1918,7 @@ Mean Squared Error:
     \end{Verbatim}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
+\prompt{In}{incolor}{283}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{n\PYZus{}vars} \PY{o}{=} \PY{l+m+mi}{6}
 \PY{n}{cols} \PY{o}{=} \PY{n}{min\PYZus{}mse\PYZus{}columns}\PY{p}{[}\PY{n}{n\PYZus{}vars}\PY{p}{]}
@@ -1945,6 +1930,7 @@ Mean Squared Error:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 Number of variables: 6
+
 Coefficients:
               Variable  Coefficient
 2        heart\_disease     0.137909
